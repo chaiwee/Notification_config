@@ -11,16 +11,18 @@ import com.google.firebase.iid.FirebaseInstanceId;
 public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
 
     private static final String TAG = "MyFirebaseIIDService";
+    public static final String REGISTRATION_SUCCESS = "RegistrationSuccess";
+
     @Override
     public void onTokenRefresh() {
-        // Get updated InstanceID token.
+        // to get instance ID token
         String refreshedToken = FirebaseInstanceId.getInstance().getToken();
         Log.d(TAG, "Refreshed token: " + refreshedToken);
 
         // If you want to send messages to this application instance or
         // manage this apps subscriptions on the server side, send the
         // Instance ID token to your app server.
-        sendRegistrationToServer(refreshedToken);
+        sendRegistrationToServer(refreshedToken);   //sending the token to server
     }
 
     // [END refresh_token]
@@ -34,6 +36,5 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
      * @param token The new token.
      */
     private void sendRegistrationToServer(String token) {
-        // TODO: Implement this method to send token to your app server.
     }
 }

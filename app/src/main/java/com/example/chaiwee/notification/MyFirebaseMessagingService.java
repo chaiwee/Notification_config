@@ -32,11 +32,14 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         
-        Log.d(TAG, "From: " + remoteMessage.getFrom());
+        String from = remoteMessage.getFrom();
+        Log.d(TAG, "From: " + from);
+        
+        if(remoteMessage.getNotification()!=null){
         Log.d(TAG, "Notification Message Body: " + remoteMessage.getNotification().getBody());
-
-        //Calling method to generate notification
-        sendNotification(remoteMessage.getNotification().getBody());
+    
+        sendNotification(remoteMessage.getNotification().getBody());  //Calling method to generate notification
+        }
     }
 
     private void sendNotification(String messageBody) {
@@ -46,6 +49,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 PendingIntent.FLAG_ONE_SHOT);
 
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        
         NotificationCompat.Builder notificationBuilder =
                 new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.ic_stat_ic_notification)

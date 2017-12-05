@@ -11,7 +11,7 @@ import com.google.firebase.iid.FirebaseInstanceId;
 public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
 
     private static final String TAG = "MyFirebaseIIDService";
-    public static final String REGISTRATION_SUCCESS = "RegistrationSuccess";
+    //public static final String REGISTRATION_SUCCESS = "RegistrationSuccess";
 
     @Override
     public void onTokenRefresh() {
